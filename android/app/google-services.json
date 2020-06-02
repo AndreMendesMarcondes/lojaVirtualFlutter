@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "564698780876",
+    "firebase_url": "https://loja-c9c9f.firebaseio.com",
+    "project_id": "loja-c9c9f",
+    "storage_bucket": "loja-c9c9f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:564698780876:android:67801558aeecfb109d1e69",
+        "android_client_info": {
+          "package_name": "com.andremmarcondes.lojavirtual"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "564698780876-v3cdahhnr0i723oc7a7oivfh6l15hckl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAUtc0WHlTDmkzicWmrX0GfMA52uEqCL-g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "564698780876-v3cdahhnr0i723oc7a7oivfh6l15hckl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
