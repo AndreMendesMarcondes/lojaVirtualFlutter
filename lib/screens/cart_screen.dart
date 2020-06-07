@@ -3,6 +3,9 @@ import 'package:lojavirtual/models/cart_model.dart';
 import 'package:lojavirtual/models/user_model.dart';
 import 'package:lojavirtual/screens/login_screen.dart';
 import 'package:lojavirtual/tiles/cart_tile.dart';
+import 'package:lojavirtual/widgets/cart_price.dart';
+import 'package:lojavirtual/widgets/discount_card.dart';
+import 'package:lojavirtual/widgets/ship_card.dart';
 import 'package:scoped_model/scoped_model.dart';
 
 class CartScreen extends StatelessWidget {
@@ -18,7 +21,7 @@ class CartScreen extends StatelessWidget {
             alignment: Alignment.center,
             child: ScopedModelDescendant<CartModel>(
               builder: (context, child, model) {
-                int productsCount = model.prodcuts.length;
+                int productsCount = model.products.length;
                 return Text(
                   "${productsCount ?? 0} ${productsCount == 1 ? "ITEM" : "ITENS"}",
                   style: TextStyle(fontSize: 17),
@@ -70,7 +73,7 @@ class CartScreen extends StatelessWidget {
               ],
             ),
           );
-        } else if (model.prodcuts == null || model.prodcuts.length == 0) {
+        } else if (model.products == null || model.products.length == 0) {
           return Center(
             child: Text(
               "Nenhum produto no carrinho",
@@ -85,10 +88,13 @@ class CartScreen extends StatelessWidget {
           return ListView(
             children: <Widget>[
               Column(
-                children: model.prodcuts.map((product) {
+                children: model.products.map((product) {
                   return CartTile(product);
                 }).toList(),
-              )
+              ),
+              DiscountCard(),
+              ShipCard(),
+              CartPrice((){})
             ],
           );
         }
