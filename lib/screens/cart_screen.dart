@@ -8,6 +8,8 @@ import 'package:lojavirtual/widgets/discount_card.dart';
 import 'package:lojavirtual/widgets/ship_card.dart';
 import 'package:scoped_model/scoped_model.dart';
 
+import 'order_screen.dart';
+
 class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,9 @@ class CartScreen extends StatelessWidget {
                 Icon(
                   Icons.remove_shopping_cart,
                   size: 80,
-                  color: Theme.of(context).primaryColor,
+                  color: Theme
+                      .of(context)
+                      .primaryColor,
                 ),
                 SizedBox(
                   height: 16,
@@ -65,7 +69,9 @@ class CartScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 18),
                   ),
                   textColor: Colors.white,
-                  color: Theme.of(context).primaryColor,
+                  color: Theme
+                      .of(context)
+                      .primaryColor,
                   onPressed: () {
                     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
                   },
@@ -94,7 +100,13 @@ class CartScreen extends StatelessWidget {
               ),
               DiscountCard(),
               ShipCard(),
-              CartPrice((){})
+              CartPrice(() async {
+                String orderId = await model.finishOrder();
+                if (orderId != null)
+                  Navigator.of(context).pushReplacement(
+                      MaterialPageRoute(builder: (context) => OrderScreen(orderId))
+                  );
+              })
             ],
           );
         }
