@@ -42,34 +42,26 @@ class CategoryScreen extends StatelessWidget {
                   child: CircularProgressIndicator(),
                 );
               else
-                return TabBarView(
-                    physics: NeverScrollableScrollPhysics(),
-                    children: [
-                      GridView.builder(
-                          padding: EdgeInsets.all(4),
-                          gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  mainAxisSpacing: 4,
-                                  crossAxisSpacing: 4,
-                                  childAspectRatio: 0.65),
-                          itemCount: snapshot.data.documents.length,
-                          itemBuilder: (context, index) {
-                            return ProductTile(
-                                "grid",
-                                ProductData.fromDocument(
-                                    snapshot.data.documents[index]));
-                          }),
-                      ListView.builder(
-                          padding: EdgeInsets.all(4),
-                          itemCount: snapshot.data.documents.length,
-                          itemBuilder: (context, index) {
-                            return ProductTile(
-                                "list",
-                                ProductData.fromDocument(
-                                    snapshot.data.documents[index]));
-                          }),
-                    ]);
+                return TabBarView(physics: NeverScrollableScrollPhysics(), children: [
+                  GridView.builder(
+                      padding: EdgeInsets.all(4),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2, mainAxisSpacing: 4, crossAxisSpacing: 4, childAspectRatio: 0.65),
+                      itemCount: snapshot.data.documents.length,
+                      itemBuilder: (context, index) {
+                        ProductData data = ProductData.fromDocument(snapshot.data.documents[index]);
+                        data.category = this.snapshot.documentID;
+                        return ProductTile("grid", data);
+                      }),
+                  ListView.builder(
+                      padding: EdgeInsets.all(4),
+                      itemCount: snapshot.data.documents.length,
+                      itemBuilder: (context, index) {
+                        ProductData data = ProductData.fromDocument(snapshot.data.documents[index]);
+                        data.category = this.snapshot.documentID;
+                        return ProductTile("list", data);
+                      }),
+                ]);
             }),
       ),
     );
