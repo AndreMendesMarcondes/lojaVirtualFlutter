@@ -10,7 +10,7 @@ class ProductData {
   List sizes;
 
   ProductData.fromDocument(DocumentSnapshot snapshot) {
-    id = snapshot.data["id"];
+    id = snapshot.documentID;
     title = snapshot.data["title"];
     description = snapshot.data["description"];
     price = snapshot.data["price"] + 0.0;
